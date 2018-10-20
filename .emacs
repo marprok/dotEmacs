@@ -46,6 +46,12 @@
 (require 'powerline)
 (powerline-center-theme)
 
+;; Auto-Complete
+(use-package auto-complete
+  :ensure t)
+(ac-config-default)
+(global-auto-complete-mode t)
+
 (use-package avy
   :ensure t
   :bind
