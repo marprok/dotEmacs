@@ -113,3 +113,6 @@
 ;;(setq c-default-style "linux")
 ;; remove *GNU Emacs* buffer
 (setq inhibit-splash-screen t)
+;; fullscreen
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
