@@ -61,6 +61,16 @@
 (use-package cyberpunk-theme
   :ensure t)
 
+;;(use-package neotree
+;;  :ensure t)
+
+;;(add-to-list 'package-archives
+  ;;         '("melpa" . "http://melpa.org/packages/"))
+;;(require 'neotree)
+;;(global-set-key [f12] 'neotree-toggle)
+
+;;(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -70,11 +80,13 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (cyberpunk)))
+ '(custom-enabled-themes '(cyberpunk))
  '(custom-safe-themes
-   (quote
-    ("d6922c974e8a78378eacb01414183ce32bc8dbf2de78aabcc6ad8172547cb074" default)))
- '(fci-rule-color "#383838"))
+   '("d6922c974e8a78378eacb01414183ce32bc8dbf2de78aabcc6ad8172547cb074" default))
+ '(fci-rule-color "#383838")
+ '(initial-frame-alist '((fullscreen . maximized)))
+ '(package-selected-packages
+   '(neotree use-package powerline golden-ratio cyberpunk-theme counsel avy auto-complete)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -106,13 +118,16 @@
 
 ;;(global-linum-mode t)
 ;; curly braces identation
+(setq c-default-style "linux")
 (setq-default c-basic-offset 4
-	      tab-width 4
-	      indent-tabs-mode t
-	      c-default-style "linux")
+			  tab-width 4
+			  indent-tabs-mode nil)
 ;;(setq c-default-style "linux")
 ;; remove *GNU Emacs* buffer
 (setq inhibit-splash-screen t)
 ;; fullscreen
-(custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+
+(setq-default python-basic-offset 4
+	      tab-width 4
+	      indent-tabs-mode t)
