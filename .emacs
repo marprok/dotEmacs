@@ -92,6 +92,8 @@
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "red")
 
+(electric-pair-mode 1)
+
 ;; remove *GNU Emacs* buffer
 (setq inhibit-splash-screen t)
 ;; fullscreen
