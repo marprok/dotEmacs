@@ -1,11 +1,7 @@
 (require 'package)
-
+(setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/")
-	     t)
-
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/")
 	     t)
 
 (package-initialize)
@@ -15,6 +11,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(eval-when-compile
+  (require 'use-package))
 
 (use-package ivy
   :ensure t)
@@ -47,6 +45,11 @@
 
 (use-package magit
   :ensure t)
+
+;; Move lines up/down
+(use-package move-text
+  :ensure t)
+(move-text-default-bindings)
 
 ;; Cyberpunk theme
 (use-package cyberpunk-theme
