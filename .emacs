@@ -51,6 +51,11 @@
   :ensure t)
 (move-text-default-bindings)
 
+;; clang-format on save
+(use-package clang-format+
+  :ensure t)
+(add-hook 'c-mode-common-hook #'clang-format+-mode)
+
 ;; Cyberpunk theme
 (use-package cyberpunk-theme
   :ensure t)
