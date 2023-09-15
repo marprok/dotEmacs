@@ -61,6 +61,14 @@
   :ensure t)
 (load-theme `cyberpunk t)
 
+;; Rust mode
+(use-package rust-mode
+  :ensure t)
+(require 'rust-mode)
+(add-hook 'rust-mode-hook
+		  (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
