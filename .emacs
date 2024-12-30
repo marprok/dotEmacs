@@ -42,6 +42,7 @@
   :ensure t)
 (ac-config-default)
 (global-auto-complete-mode t)
+(add-to-list 'ac-modes 'rust-mode)
 
 (use-package magit
   :ensure t)
@@ -110,9 +111,6 @@
 
 ;; remove *GNU Emacs* buffer
 (setq inhibit-splash-screen t)
-;; fullscreen
-
-
 
 ;; Make a non-standard key binding.  We can put this in
 ;; c-mode-base-map because c-mode-map, c++-mode-map, and so on,
@@ -195,3 +193,7 @@
 (setq-default python-basic-offset 4
 	      tab-width 4
 	      indent-tabs-mode t)
+;; disable bell and add ui indicator
+;;(setq visible-bell 1)
+;; completely turn off alarms
+(setq ring-bell-function 'ignore)
