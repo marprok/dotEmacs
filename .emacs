@@ -37,16 +37,6 @@
   :config
   (golden-ratio-mode))
 
-;; Auto-Complete
-(use-package auto-complete
-  :ensure t)
-(ac-config-default)
-(global-auto-complete-mode t)
-(add-to-list 'ac-modes 'rust-mode)
-
-(use-package magit
-  :ensure t)
-
 ;; Move lines up/down
 (use-package move-text
   :ensure t)
@@ -70,13 +60,35 @@
 		  (lambda () (setq indent-tabs-mode nil)))
 (setq rust-format-on-save t)
 
+(use-package lsp-mode
+  :ensure t)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+
+(use-package yasnippet
+  :ensure t)
+
+(use-package flycheck
+  :ensure t)
+
+(use-package company
+  :ensure t)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+(with-eval-after-load 'lsp-mode (yas-global-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(initial-frame-alist '((fullscreen . maximized)))
- '(package-selected-packages '(cyberpunk-theme golden-ratio counsel ivy use-package)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,28 +99,17 @@
 ;; Generic UI customization
 ;; Disable the backup files.
 (setq make-backup-files nil)
-
 (setq frame-title-format "emacs")
-
 (menu-bar-mode -1)
-
 (tool-bar-mode -1)
-
 (scroll-bar-mode -1)
-
 (set-default 'cursor-type 'hbar)
-
 (column-number-mode)
-
 (show-paren-mode)
-
 (global-hl-line-mode)
-
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "red")
-
 (electric-pair-mode 1)
-
 ;; remove *GNU Emacs* buffer
 (setq inhibit-splash-screen t)
 
