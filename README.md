@@ -38,3 +38,6 @@ CompileFlags:
 
 The second way was to check which gcc versions are installed under `/usr/lib/gcc/x86_64-linux-gnu/`. In my case I had both 13 and 14.
 I am ot sure why but I had `libstdc++-13-dev` installed but not `libstdc++-14-dev`. Once I installed it, auto-complete worked as expected. 
+
+# compile_commands.json
+To create the file run cmake with the following flag: `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..`
