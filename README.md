@@ -9,3 +9,32 @@
 
 # Install dependencies used by .emacs
 `sudo apt install -y clangd clang-format clang`
+# If c/c++ standard headers do not auto-complete
+In that case I have found two ways that seem to resolve the issue.
+
+The first one is to create `.config/clagnd/config.yaml` and manually put the include paths there.
+To get the paths run `g++ -v -x c++ -E /dev/null` and grab every path after `#include <...> search starts here:`.
+Here is an example file: 
+
+```
+CompileFlags:
+    Add: [
+	-isystem,
+	/usr/include/c++/13,
+	-isystem,
+	/usr/include/x86_64-linux-gnu/c++/13,
+	-isystem,
+	/usr/include/c++/13/backward,
+	-isystem,
+	/usr/lib/gcc/x86_64-linux-gnu/13/include,
+	-isystem,
+	/usr/local/include,
+	-isystem,
+	/usr/include/x86_64-linux-gnu,
+	-isystem,
+	/usr/include,
+]
+```
+
+The second way was to check which gcc versions are installed under `/usr/lib/gcc/x86_64-linux-gnu/`. In my case I had both 13 and 14.
+I am ot sure why but I had `libstdc++-13-dev` installed but not `libstdc++-14-dev`. Once I installed it, auto-complete worked as expected. 
