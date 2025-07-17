@@ -80,6 +80,7 @@
       company-minimum-prefix-length 1
       lsp-idle-delay 0.1)  ;; clangd is fast
 
+(setq lsp-clients-clangd-args '("--header-insertion=never"))
 (with-eval-after-load 'lsp-mode (yas-global-mode))
 
 (custom-set-variables
