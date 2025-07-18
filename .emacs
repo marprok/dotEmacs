@@ -65,6 +65,19 @@
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package ccls
+  :ensure t
+  :config
+  (setq lsp-prefer-flymake nil)
+  (setq ccls-initialization-options `(:cache (:directory ".cache"), :compilationDatabaseDirectory "build"))
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
 (use-package yasnippet
   :ensure t)
 
@@ -80,7 +93,7 @@
       company-minimum-prefix-length 1
       lsp-idle-delay 0.1)  ;; clangd is fast
 
-(setq lsp-clients-clangd-args '("--header-insertion=never"))
+;;(setq lsp-clients-clangd-args '("--header-insertion=never"))
 (with-eval-after-load 'lsp-mode (yas-global-mode))
 
 (custom-set-variables
