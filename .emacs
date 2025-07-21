@@ -65,6 +65,10 @@
 (add-hook 'c-mode-hook 'lsp)
 (add-hook 'c++-mode-hook 'lsp)
 
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
 (use-package yasnippet
   :ensure t)
 
