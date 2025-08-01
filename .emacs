@@ -25,7 +25,8 @@
 (use-package counsel
   :ensure t
   :bind (("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file)))
+	 ("C-x C-f" . counsel-find-file)
+	 ("C-c j" . counsel-git-grep)))
 
 (use-package swiper
   :ensure t
